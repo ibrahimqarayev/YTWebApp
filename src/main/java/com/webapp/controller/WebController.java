@@ -1,7 +1,7 @@
-package com.firstwebapp.controller;
+package com.webapp.controller;
 
-import com.firstwebapp.data.entity.Student;
-import com.firstwebapp.data.repository.StudentRepository;
+import com.webapp.data.entity.Student;
+import com.webapp.data.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
