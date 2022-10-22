@@ -1,4 +1,4 @@
-package com.firstwebapp.data.entity;
+package com.webapp.data.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
