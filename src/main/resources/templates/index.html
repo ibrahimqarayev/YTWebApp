@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Page</title>
+</head>
+<body>
+
+<h1 style="text-align: center;color: white;background:black;">Student Portal</h1>
+
+<a href="/student/new">Add a student</a> <br>
+
+<a href="/student/list">Student list</a> <br>
+
+
+<form action="/student/update" method="GET">
+    Update student with id <input type="text" name="id">
+    <input type="submit" value="Search">
+</form>
+
+<form action="/student/delete" method="GET">
+    Delete student with id <input type="text" name="id">
+    <input type="submit" value="Delete">
+</form>
+
+</body>
+</html>
