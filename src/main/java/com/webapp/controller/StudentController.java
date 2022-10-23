@@ -17,7 +17,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping(value = "/student")
-public class WebController {
+public class StudentController {
 
     @Autowired //dependency injection
     private StudentRepository studentRepository;
