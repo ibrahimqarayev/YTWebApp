@@ -10,6 +10,12 @@
     Student Id:<input type="text" th:field="*{id}"><br><br>
     Student Name:<input type="text" th:field="*{name}"><br><br>
     Student Surname:<input type="text" th:field="*{surname}"><br><br>
+
+    <p th:each="course:${allCourses}">
+        <input name="courses" th:value="${course.id}" type="checkbox">
+        <label th:text="${course.name}"></label>
+    </p>
+
     <input type="submit" value="Add a student">
 </form>
 
