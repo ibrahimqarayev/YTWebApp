@@ -1,6 +1,8 @@
 package com.webapp.controller;
 
+import com.webapp.data.entity.Course;
 import com.webapp.data.entity.Student;
+import com.webapp.data.repository.CourseRepository;
 import com.webapp.data.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,9 @@ public class WebController {
     @Autowired //dependency injection
     private StudentRepository studentRepository;
 
+    @Autowired
+    private CourseRepository courseRepository;
+
     //http://localhost:8080/student/index
     @GetMapping("/index")
     public String index() {
@@ -38,7 +43,9 @@ public class WebController {
     @GetMapping("/new")
     public String newPage(Model model) {
         model.addAttribute("student", new Student());
-        return "details";
+       Iterable<Course> courses= courseRepository.findAll();
+       model.addAttribute("allCourses",courses);
+        return "add";
     }
 
     //http://localhost:8080/student/save
@@ -57,6 +64,10 @@ public class WebController {
             Student student = optionalStudent.get();
             model.addAttribute("student", student);
         }
+
+        Iterable<Course> courses= courseRepository.findAll();
+        model.addAttribute("allCourses",courses);
+
         return "update";
     }
 
@@ -67,6 +78,11 @@ public class WebController {
             Student student = optionalStudent.get();
             model.addAttribute("student", student);
         }
+
+        Iterable<Course> courses= courseRepository.findAll();
+        model.addAttribute("allCourses",courses);
+
+
         return "delete";
     }
 
