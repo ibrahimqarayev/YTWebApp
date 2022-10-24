@@ -93,18 +93,35 @@ public class StudentController {
     }
 
 
-    @GetMapping("/name/{name}")
-    public String getStudentByName(Model model, @PathVariable String name) {
+    @GetMapping("/name")
+    public String getStudentByName(Model model, @RequestParam String name) {
         List<Student> students = studentRepository.findByName(name);
         model.addAttribute("students", students);
         return "list";
     }
 
-    @GetMapping("/surname/{surname}")
-    public String getStudentBySurname(Model model, @PathVariable String surname) {
-        List<Student> students = studentRepository.getStudentBySurname(surname);
-        model.addAttribute("student", students);
+
+    @GetMapping("/name/{name}")
+    public String getStudentByNamePath(Model model, @PathVariable String name) {
+        List<Student> students = studentRepository.findByName(name);
+        model.addAttribute("students", students);
         return "list";
     }
+
+    @GetMapping("/surname")
+    public String getStudentBySurnameWith(Model model, @RequestParam String surname) {
+        List<Student> students = studentRepository.getStudentBySurname(surname);
+        model.addAttribute("students", students);
+        return "list";
+    }
+
+
+    @GetMapping("/surname/{surname}")
+    public String getStudentBySurnameWithPath(Model model, @PathVariable String surname) {
+        List<Student> students = studentRepository.getStudentBySurname(surname);
+        model.addAttribute("students", students);
+        return "list";
+    }
+
 
 }
