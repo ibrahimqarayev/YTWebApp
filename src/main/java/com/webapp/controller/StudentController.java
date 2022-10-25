@@ -7,8 +7,10 @@ import com.webapp.data.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,9 +50,14 @@ public class StudentController {
 
     //http://localhost:8080/student/save
     @PostMapping("/save")
-    public String addStudent(Student student, Model model) {
+    public String addStudent(@Valid Student student, BindingResult result, Model model) {
         Iterable<Student> students = studentRepository.findAll();
         model.addAttribute("students", students);
+
+        if (result.hasErrors()) {
+            return "add";
+        }
+
         studentRepository.save(student);
         return "redirect:list";
     }
