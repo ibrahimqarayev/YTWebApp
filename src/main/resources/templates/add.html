@@ -1,15 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <style>
+        .error {
+            color: red;
+        }
+
+
+    </style>
+
+
 </head>
 <body>
 
 <form th:method="post" th:action="@{/student/save}" th:object="${student}">
+
+    <div th:if="${#fields.hasErrors('*')}">
+        <p class="error">Please Correct Errors Below</p>
+    </div>
+
     Student Id:<input type="text" th:field="*{id}"><br><br>
+    <span class="error" th:if="${#fields.hasErrors('id')}">
+        <ul>
+            <li th:each="err:${#fields.hasErrors('id')}" th:text="${err}"/>
+        </ul>
+    </span>
+
     Student Name:<input type="text" th:field="*{name}"><br><br>
+    <span class="error" th:if="${#fields.hasErrors('name')}">
+        <ul>
+         <li th:each="err:${#fields.hasErrors('name')}" th:text="${err}"/>
+        </ul>
+    </span>
+
     Student Surname:<input type="text" th:field="*{surname}"><br><br>
+    <span class="error" th:if="${#fields.hasErrors('surname')}">
+        <ul>
+            <li th:each="err:${#fields.hasErrors('surname')}" th:text="${err}"/>
+        </ul>
+    </span>
+
 
     <p th:each="course:${allCourses}">
         <input name="courses" th:value="${course.id}" type="checkbox">
