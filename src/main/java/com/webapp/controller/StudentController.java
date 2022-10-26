@@ -51,10 +51,11 @@ public class StudentController {
     //http://localhost:8080/student/save
     @PostMapping("/save")
     public String addStudent(@Valid Student student, BindingResult result, Model model) {
-        Iterable<Student> students = studentRepository.findAll();
-        model.addAttribute("students", students);
 
         if (result.hasErrors()) {
+            Iterable<Course> courses = courseRepository.findAll();
+            model.addAttribute("allCourses", courses);
+
             return "add";
         }
 
