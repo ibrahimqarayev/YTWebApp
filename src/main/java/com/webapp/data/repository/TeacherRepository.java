@@ -1,4 +1,7 @@
 package com.webapp.data.repository;
 
-public interface TeacherRepository {
+import com.webapp.data.entity.Teacher;
+import org.springframework.data.repository.CrudRepository;
+
+public interface TeacherRepository extends CrudRepository<Teacher,Integer> {
 }
